@@ -488,10 +488,10 @@ loadSatelliteVector(PlanetProperties *planetProperties)
         {
             ifstream inFile(tleFile.c_str());
             char lines[3][80];
-            while (inFile.getline(lines[0], 80) != NULL)
+            while (inFile.getline(lines[0], 80))
             {
-                if ((inFile.getline(lines[1], 80) == NULL) 
-                    || (inFile.getline(lines[2], 80) == NULL))
+                if (!(inFile.getline(lines[1], 80)) 
+                    || !(inFile.getline(lines[2], 80)))
                 {
                     ostringstream errStr;
                     errStr << "Malformed TLE file (" << tleFile << ")?\n";
@@ -542,7 +542,7 @@ addSatellites(PlanetProperties *planetProperties, Planet *planet,
         {
             ifstream inFile(satFile.c_str());
             char *line = new char[MAX_LINE_LENGTH];
-            while (inFile.getline (line, MAX_LINE_LENGTH, '\n') != NULL)
+            while (inFile.getline(line, MAX_LINE_LENGTH, '\n'))
                 readSatelliteFile(line, planet, view, projection,
                                   planetProperties, annotationMap);
             

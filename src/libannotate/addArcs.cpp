@@ -258,7 +258,7 @@ addArcs(PlanetProperties *planetProperties, Planet *planet,
         {
             ifstream inFile(arcFile.c_str());
             char *line = new char[MAX_LINE_LENGTH];
-            while (inFile.getline (line, MAX_LINE_LENGTH, '\n') != NULL)
+            while (inFile.getline(line, MAX_LINE_LENGTH, '\n'))
                 readArcFile(line, planet, view, projection,
                             planetProperties, annotationMap);
             
@@ -292,7 +292,7 @@ addArcs(View *view, multimap<double, Annotation *> &annotationMap)
         {
             ifstream inFile(arcFile.c_str());
             char *line = new char[256];
-            while (inFile.getline (line, 256, '\n') != NULL)
+            while (inFile.getline(line, 256, '\n'))
                 readArcFile(line, NULL, view, NULL, NULL, annotationMap);
 
             inFile.close();
